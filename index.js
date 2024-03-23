@@ -20,6 +20,7 @@ const companyNameDisplay = document.querySelector('#company-name');
 const stockDataPrice = document.querySelector('#stock-price');
 const dayHighPrice = document.querySelector('#day-high');
 const dayLowPrice = document.querySelector('#day-low');
+const tickerInputSection = document.querySelector('#ticker-input');
 
 
 stockSearcherForm.addEventListener('submit', (e) => {
@@ -36,7 +37,12 @@ stockSearcherForm.addEventListener('submit', (e) => {
             dayLowPrice.textContent = 'Daily Low: ' + stockDataFinal.data[0].day_low;
 
         } catch (err) {
+            const invalidTickerMessage = document.createElement('p');
+            tickerInputSection.appendChild(invalidTickerMessage);
+            invalidTickerMessage.classList.add('wrong-ticker');
+            invalidTickerMessage.textContent = 'Invalid ticker, please make sure your input is correct.'
             console.log('Error: ' + err + ' for request')
+            console.log('wt')
         }
 
     }
