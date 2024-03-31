@@ -2,3 +2,7 @@
     color: red;
     font-size: 40px;
 }
+
+.wrong-ticker-input {
+    border: solid red 1px;
+}

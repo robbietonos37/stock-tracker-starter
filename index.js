@@ -20,6 +20,8 @@ const companyNameDisplay = document.querySelector('#company-name');
 const stockDataPrice = document.querySelector('#stock-price');
 const dayHighPrice = document.querySelector('#day-high');
 const dayLowPrice = document.querySelector('#day-low');
+const yearHighPrice = document.querySelector('#yearHigh');
+const yearLowPrice = document.querySelector('#yearLow');
 const tickerInputSection = document.querySelector('#ticker-input');
 
 
@@ -35,6 +37,9 @@ stockSearcherForm.addEventListener('submit', (e) => {
             stockDataPrice.textContent = stockDataFinal.data[0].price;
             dayHighPrice.textContent = 'Daily High: ' + stockDataFinal.data[0].day_high;
             dayLowPrice.textContent = 'Daily Low: ' + stockDataFinal.data[0].day_low;
+            yearLowPrice.textContent = 'Year Low: ' + stockDataFinal.data[0]["52_week_low"];
+            yearHighPrice.textContent = 'Year Low: ' + stockDataFinal.data[0]["52_week_high"];
+            console.log(stockDataFinal);
 
         } catch (err) {
             const invalidTickerMessage = document.createElement('p');
@@ -42,7 +47,7 @@ stockSearcherForm.addEventListener('submit', (e) => {
             invalidTickerMessage.classList.add('wrong-ticker');
             invalidTickerMessage.textContent = 'Invalid ticker, please make sure your input is correct.'
             console.log('Error: ' + err + ' for request')
-            console.log('wt')
+            stockTickerInput.classList.add('wrong-ticker-input');
         }
 
     }
